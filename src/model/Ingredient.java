@@ -1,7 +1,11 @@
 package model;
-import java.util.List;
 
-public class Ingredient {
-	private List<Character> characters;
+/**
+ * An Ingredient has 3 specific characters
+ * @author Suntea
+ *
+ */
+public class Ingredient extends Card {
+	
 
 }
