@@ -9,24 +9,23 @@ import java.util.ArrayList;
  */
 public class Match {
 	private ArrayList<Round>	rounds = new ArrayList<Round>();
-	private ArrayList<Player> 	players;
+	protected ArrayList<Player> players;
 	private Player 				firstPlayer;
 	
-	public Match(ArrayList<Player> players, Player firstPlayer) {
-		this.setPlayers(players);
-		this.firstPlayer = firstPlayer;
+	public Match(ArrayList<Player> players) {
+		this.players = players;
 	}
-	
-	public ArrayList<Player> getPlayers() {
-		return players;
+		
+	public Player getFirstPlayer() {
+		return firstPlayer;
 	}
 
-	public void setPlayers(ArrayList<Player> players) {
-		this.players = players;
+	public void setFirstPlayer(Player firstPlayer) {
+		this.firstPlayer = firstPlayer;
 	}
 
 	public void start() {
-		this.rounds.add(new Round(Season.SPRING));
+		this.rounds.add(new Round(SeasonType.SPRING));
 		
 		this.rounds.get(rounds.size() - 1).execute(this.firstPlayer, this.players);
 	}

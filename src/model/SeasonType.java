@@ -1,6 +1,6 @@
 package model;
 
-public enum Season {
+public enum SeasonType {
 	SPRING("Spring"),
 	SUMMER("Summer"),
 	AUTUMN("Autumn"),
@@ -8,7 +8,7 @@ public enum Season {
 	
 	private String name = "";
 	
-	Season(String name) {
+	SeasonType(String name) {
 		this.name = name;
 	}
 	
@@ -16,13 +16,13 @@ public enum Season {
 		return name;
 	}
 	
-	private static Season[] seasons = values();
+	private static SeasonType[] seasons = values();
 	
-	public Season next() {
+	public SeasonType next() {
 		return seasons[(this.ordinal() + 1) % seasons.length];
 	}
 	
-	public Season previous() {
+	public SeasonType previous() {
 		if ((this.ordinal() - 1) < 0) {
 			return seasons[seasons.length - 1];
 		};

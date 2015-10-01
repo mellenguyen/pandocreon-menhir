@@ -1,17 +1,20 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Player {
-	private String 		name;
-	private static int 	nbPlayers = 0;
-	private int 		id;
-	private int 		age;
-	private int 		cailloux;
+	private String 			name;
+	private static int 		nbPlayers = 0;
+	private int 			id;
+	private int 			age;
+	private int 			cailloux;
+	private ArrayList<Card> cards;
 	
 	/**
 	 * Total score
 	 */
 	private int menhirs;
-	
+
 	/**
 	 * Actual menhirs during a match. Can be destroyed; they are temporary menhirs
 	 * not immediately added to the total of menhirs.
@@ -35,6 +38,14 @@ public class Player {
 		this.name = name;
 	}
 
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
 	public int getCailloux() {
 		return cailloux;
 	}
@@ -57,6 +68,18 @@ public class Player {
 
 	public void setMenhirsMatch(int menhirsMatch) {
 		this.menhirsMatch = menhirsMatch;
+	}
+	
+	public boolean addCard(Card card) {
+		return this.cards.add(card);
+	}
+	
+	public boolean removeCard(Card card) {
+		return this.cards.remove(card);
+	}
+	
+	public String toString() {
+		return "Player n° " + this.id + ": " + this.name;
 	}
 	
 	public void play() {

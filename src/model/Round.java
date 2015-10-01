@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * Each player plays his turn
@@ -9,9 +8,9 @@ import java.util.Iterator;
  *
  */
 public class Round {
-	private Season season;
+	private SeasonType season;
 	
-	public Round(Season season) {
+	public Round(SeasonType season) {
 		this.season = season;
 	}
 	
@@ -19,9 +18,11 @@ public class Round {
 	 * Play a round of a match
 	 */
 	public void execute(Player firstPlayer, ArrayList<Player> players) {
-		Iterator<Player> PlayersIterator = players.iterator();
-		while (PlayersIterator.hasNext()) {
-			System.out.println(PlayersIterator.next());
+		PlayersIterator it = new PlayersIterator(players);
+		while (it.hasNext()) {
+			System.out.println(it.next());
+			
+			// player.strategy.play()
 		}
 	}
 
