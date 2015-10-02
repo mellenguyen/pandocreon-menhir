@@ -1,14 +1,14 @@
 package model;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public abstract class Card {
-	private List<Character> characters;
+	private ArrayList<Character> characters;
 	
 	public Card() {
 	}
 	
-	public Card(List<Character> characters) {
+	public Card(ArrayList<Character> characters) {
 		this.characters = characters;
 	}
 	

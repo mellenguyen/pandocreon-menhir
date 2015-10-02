@@ -28,6 +28,7 @@ public class SimpleGame extends Game {
 		return p;
 	}
 	
+	@Override
 	public void start() {
 		this.match.start();
 	}

@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * Chaque round/saison de jeu fait jouer tous les joueurs une seule fois
+ * Every round/Season of a match is played by each player once
  * @author mellenguyen
  *
  */
@@ -15,7 +15,11 @@ public class PlayersIterator implements Iterator<Player> {
     public PlayersIterator(ArrayList<Player> players) {
         this.players = players;
         index = 0;
-        counter = 1;
+        counter = 0;
+    }
+    
+    public Integer getCounter() {
+    	return this.counter;
     }
 
     @Override
@@ -24,16 +28,14 @@ public class PlayersIterator implements Iterator<Player> {
     		this.counter += 1;
 	        if(isLast()) {
 	            index = 0;
-	            return players.get(index);
-	        } else {
-	        	return players.get(index++);
 	        }
+	        return players.get(index++);
     	}
-    	throw new ArrayIndexOutOfBoundsException("All players have played in this turn !");
+    	throw new ArrayIndexOutOfBoundsException("All players have played in this round !");
     }
 
     public boolean isLast() {
-        return this.players.size() - 1 == index;
+        return this.players.size() - 1 < index;
     }
 
 	@Override

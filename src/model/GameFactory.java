@@ -9,9 +9,7 @@ public class GameFactory {
 		EXTENDED_GAME;
 	}
 	
-	public GameFactory() {
-		
-	}
+	public GameFactory() {}
 	
 	public Game createGame(GameType g, ArrayList<Player> players) {
 		Game game = null;

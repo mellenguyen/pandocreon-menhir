@@ -16,4 +16,6 @@ public abstract class Game {
 	public void setPlayers(ArrayList<Player> players) {
 		this.players = players;
 	}
+	
+	public abstract void start();
 }
