@@ -2,7 +2,7 @@ package model;
 
 import java.util.List;
 
-public class Card {
+public abstract class Card {
 	private List<Character> characters;
 	
 	public Card() {

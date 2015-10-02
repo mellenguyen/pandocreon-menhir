@@ -8,9 +8,9 @@ import java.util.ArrayList;
  *
  */
 public class Match {
-	private ArrayList<Round>	rounds = new ArrayList<Round>();
-	protected ArrayList<Player> players;
-	private Player 				firstPlayer;
+	private ArrayList<Round>  rounds = new ArrayList<Round>();
+	private ArrayList<Player> players;
+	private Player 			  firstPlayer;
 	
 	public Match(ArrayList<Player> players) {
 		this.players = players;

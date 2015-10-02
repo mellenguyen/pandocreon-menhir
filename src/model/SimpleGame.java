@@ -1,7 +1,6 @@
 package model;import java.util.ArrayList;
 import java.util.Iterator;
 
-
 /**
  * A simple game is composed of only one match.
  * @author mellenguyen

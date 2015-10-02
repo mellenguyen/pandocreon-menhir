@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-public class Player {
+public abstract class Player {
 	private String 			name;
 	private static int 		nbPlayers = 0;
 	private int 			id;
@@ -20,12 +20,10 @@ public class Player {
 	 * not immediately added to the total of menhirs.
 	 */
 	private int menhirsMatch;
-	private GameStrategy strategy;
 	
-	public Player(String name, int age, GameStrategy strategy) {
+	public Player(String name, int age) {
 		this.name = name;
 		this.age = age;
-		this.strategy = strategy;
 		Player.nbPlayers += 1;
 		this.id = Player.nbPlayers;
 	}
@@ -82,7 +80,5 @@ public class Player {
 		return "Player n° " + this.id + ": " + this.name;
 	}
 	
-	public void play() {
-		this.strategy.play();
-	} 
+	public abstract void play(); 
 }
