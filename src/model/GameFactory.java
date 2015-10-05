@@ -2,6 +2,11 @@ package model;
 
 import java.util.ArrayList;
 
+/**
+ * This factory create a game according to the user input. A game can be simple or with advanced rules.
+ * @author mellenguyen
+ *
+ */
 public class GameFactory {
 	
 	public static enum GameType {

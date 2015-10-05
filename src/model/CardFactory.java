@@ -1,15 +1,20 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
+/**
+ * This factory create cards; a card can be an ingredient which has 3 characters : giant, fertilizer and goblin, or can be a special card
+ * that is used only with an advanced game.
+ * @author mellenguyen
+ *
+ */
 public class CardFactory {
 	public static enum CardType {
 		INGREDIENT,
 		SPECIAL_CARD;
 	}
 	
-	public void CardFactory() {}
+	public CardFactory() {}
 	
 	public Card createCard(CardType cardType) {
 		Card card = null;
