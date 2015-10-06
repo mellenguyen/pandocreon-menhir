@@ -16,7 +16,7 @@ public class CardFactory {
 	
 	public CardFactory() {}
 	
-	public Card createCard(CardType cardType) {
+	public Card createCard(CardType cardType, ArrayList<Integer> values) {
 		Card card = null;
 		ArrayList<Character> characters = new ArrayList<Character>();
 		

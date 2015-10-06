@@ -14,11 +14,15 @@ public class Round {
 		this.season = season;
 	}
 	
+	public ArrayList<Player> dealCards(ArrayList<Player> players, ArrayList<Card> cards) {
+		
+	}
+	
 	/**
 	 * Play a round of a match
 	 */
 	public void execute(Player firstPlayer, ArrayList<Player> players) {
-		PlayersIterator it = new PlayersIterator(players);
+		PlayersIterator it = new PlayersIterator(players, firstPlayer);
 		while (it.hasNext()) {
 			System.out.println(it.next());
 			

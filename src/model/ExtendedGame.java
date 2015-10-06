@@ -12,5 +12,16 @@ public class ExtendedGame extends Game {
 	public ExtendedGame(ArrayList<Player> players) {
 		super(players);
 	}
+	
+	@Override
+	public GameFactory.GameType getGameType() {
+		return GameFactory.GameType.EXTENDED_GAME;
+	}
+
+	@Override
+	public void start() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

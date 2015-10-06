@@ -7,19 +7,19 @@ public abstract class Player {
 	private static int 		nbPlayers = 0;
 	private int 			id;
 	private int 			age;
-	private int 			cailloux;
+	private int 			cailloux = 0;
 	private ArrayList<Card> cards;
 	
 	/**
 	 * Total score
 	 */
-	private int menhirs;
+	private int menhirs = 0;
 
 	/**
 	 * Actual menhirs during a match. Can be destroyed; they are temporary menhirs
 	 * not immediately added to the total of menhirs.
 	 */
-	private int menhirsMatch;
+	private int menhirsMatch = 0;
 	
 	public Player(String name, int age) {
 		this.name = name;
@@ -51,6 +51,10 @@ public abstract class Player {
 	public void setCailloux(int cailloux) {
 		this.cailloux = cailloux;
 	}
+	
+	public void addCailloux(int cailloux) {
+		this.cailloux += cailloux;
+	}
 
 	public int getMenhirs() {
 		return menhirs;
@@ -59,6 +63,10 @@ public abstract class Player {
 	public void setMenhirs(int menhirs) {
 		this.menhirs = menhirs;
 	}
+	
+	public void addMenhirs(int menhirs) {
+		this.menhirs += menhirs;
+	}
 
 	public int getMenhirsMatch() {
 		return menhirsMatch;
@@ -66,6 +74,10 @@ public abstract class Player {
 
 	public void setMenhirsMatch(int menhirsMatch) {
 		this.menhirsMatch = menhirsMatch;
+	}
+
+	public void addMenhirsMatch(int menhirsMatch) {
+		this.menhirsMatch += menhirsMatch;
 	}
 	
 	public boolean addCard(Card card) {

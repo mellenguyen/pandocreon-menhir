@@ -7,12 +7,22 @@ import java.util.Iterator;
  *
  */
 public class SimpleGame extends Game {
-	private Match match;
+	private Match 			match;
+	private ArrayList<Card>	cards;
 
-	public SimpleGame(ArrayList<Player> players) {
+	public SimpleGame(ArrayList<Player> players, ArrayList<Card> cards) {
 		super(players);
-		this.match = new Match(players);
+		this.initializePlayers();
+		this.cards = cards;
+		this.match = new Match(players, this, this.cards);
 		this.match.setFirstPlayer(getYoungestPlayer());
+	}
+	
+	public void initializePlayers() {
+		Iterator<Player> it = players.iterator();
+		while (it.hasNext()) {
+			it.next().addCailloux(2);
+		}
 	}
 	
 	private Player getYoungestPlayer() {
@@ -26,6 +36,11 @@ public class SimpleGame extends Game {
 			}
 		}
 		return p;
+	}
+	
+	@Override
+	public GameFactory.GameType getGameType() {
+		return GameFactory.GameType.SIMPLE_GAME;
 	}
 	
 	@Override

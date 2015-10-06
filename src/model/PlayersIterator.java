@@ -18,6 +18,12 @@ public class PlayersIterator implements Iterator<Player> {
         counter = 0;
     }
     
+    public PlayersIterator(ArrayList<Player> players, Player firstPlayer) {
+        this.players = players;
+        counter = 0;
+        index = this.players.indexOf(firstPlayer);
+    }
+    
     public Integer getCounter() {
     	return this.counter;
     }

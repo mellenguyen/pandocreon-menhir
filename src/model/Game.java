@@ -17,5 +17,7 @@ public abstract class Game {
 		this.players = players;
 	}
 	
+	public abstract GameFactory.GameType getGameType();
+	
 	public abstract void start();
 }

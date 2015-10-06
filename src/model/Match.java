@@ -8,12 +8,16 @@ import java.util.ArrayList;
  *
  */
 public class Match {
+	private Game game;
 	private ArrayList<Round>  rounds = new ArrayList<Round>();
 	private ArrayList<Player> players;
 	private Player 			  firstPlayer;
+	private ArrayList<Card>	  cards;
 	
-	public Match(ArrayList<Player> players) {
+	public Match(ArrayList<Player> players, Game game, ArrayList<Card> cards) {
 		this.players = players;
+		this.game = game;
+		this.cards = cards;
 	}
 		
 	public Player getFirstPlayer() {
@@ -26,7 +30,7 @@ public class Match {
 
 	public void start() {
 		this.rounds.add(new Round(SeasonType.SPRING));
-		
+		this.rounds.get(rounds.size() - 1).dealCards(this.players, this.cards);
 		this.rounds.get(rounds.size() - 1).execute(this.firstPlayer, this.players);
 	}
 
