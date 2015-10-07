@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 public abstract class Card {
 	private ArrayList<Character> characters;
+	private String name;
 	
-	public Card() {
+	public Card(String name) {
+		this.name = name;
 	}
 	
 	public Card(ArrayList<Character> characters) {

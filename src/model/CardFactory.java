@@ -16,41 +16,37 @@ public class CardFactory {
 	
 	public CardFactory() {}
 	
-	public Card createCard(CardType cardType, ArrayList<Integer> values) {
-		Card card = null;
+	public ArrayList<Card> createCards(CardType cardType) {
+		ArrayList<Card> cards = new ArrayList<Card>();
 		ArrayList<Character> characters = new ArrayList<Character>();
 		
 		switch (cardType) {
 			case INGREDIENT:
-				Character giant = new Character(CharacterType.GIANT);
-				giant.addSeason(SeasonType.SPRING, 4);
-				giant.addSeason(SeasonType.SUMMER, 3);
-				giant.addSeason(SeasonType.AUTUMN, 5);
-				giant.addSeason(SeasonType.WINTER, 2);
+				Character giant = new Character(CharacterType.GIANT, 1, 1, 1, 1);
 				characters.add(giant);
-				
-				Character fertilizer = new Character(CharacterType.FERTILIZER);
-				fertilizer.addSeason(SeasonType.SPRING, 2);
-				fertilizer.addSeason(SeasonType.SUMMER, 4);
-				fertilizer.addSeason(SeasonType.AUTUMN, 1);
-				fertilizer.addSeason(SeasonType.WINTER, 3);
+				Character fertilizer = new Character(CharacterType.FERTILIZER, 2, 0, 1, 1);
 				characters.add(fertilizer);
-				
-				Character goblin = new Character(CharacterType.GOBLIN);
-				goblin.addSeason(SeasonType.SPRING, 3);
-				goblin.addSeason(SeasonType.SUMMER, 3);
-				goblin.addSeason(SeasonType.AUTUMN, 2);
-				goblin.addSeason(SeasonType.WINTER, 4);
+				Character goblin = new Character(CharacterType.GOBLIN, 2, 0, 2, 0);
 				characters.add(goblin);
-						
-				card = new Ingredient(characters);
+				cards.add(new Ingredient(characters));
+				
+				characters.get(0).changeSeasons(2, 0, 1, 1);
+				characters.get(1).changeSeasons(1, 3, 0, 0);
+				characters.get(2).changeSeasons(0, 1, 2, 1);
+				cards.add(new Ingredient(characters));
+				
+				characters.get(0).changeSeasons(0, 0, 4, 0);
+				characters.get(1).changeSeasons(0, 2, 2, 0);
+				characters.get(2).changeSeasons(0, 0, 1, 3);
+				cards.add(new Ingredient(characters));
+				
 				break;
 			case SPECIAL_CARD:
 				break;
 			default:		
 			
 		}
-		return card;
+		return cards;
 	}
 
 }

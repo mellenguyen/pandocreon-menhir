@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Console {
 	private static ArrayList<Player> players = new ArrayList<Player>();
@@ -10,14 +11,12 @@ public class Console {
 		
 		// Create cards
 		CardFactory cardFactory = new CardFactory();
-		ArrayList<Integer> values = new ArrayList<Integer>;
-		
-		values.add(4);
-		values.add(3);
-		values.add(5);
-		values.add(2);
-		cards.add(cardFactory.createCard(CardFactory.CardType.INGREDIENT));
-		
+		cards.addAll(cardFactory.createCards(CardFactory.CardType.INGREDIENT));
+		Iterator<Card> it = cards.iterator();
+		while (it.hasNext()) {
+			System.out.println(it.next());
+		}
+
 		// Create players
 		PlantStrategy plantStrategy = new PlantStrategy();
 		PlayerFactory playerFactory = new PlayerFactory();
