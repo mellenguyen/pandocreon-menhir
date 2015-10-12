@@ -8,8 +8,8 @@ import java.util.ArrayList;
  *
  */
 public class Ingredient extends Card {
-	public Ingredient(ArrayList<Character> characters) {
-		super(characters);
+	public Ingredient(String name, ArrayList<Character> characters) {
+		super(name, characters);
 	}
 
 }

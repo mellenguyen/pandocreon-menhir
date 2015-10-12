@@ -14,6 +14,12 @@ public class Round {
 		this.season = season;
 	}
 	
+	/**
+	 * Deal cards to players
+	 * @param players
+	 * @param cards
+	 * @return
+	 */
 	public ArrayList<Player> dealCards(ArrayList<Player> players, ArrayList<Card> cards) {
 		
 	}

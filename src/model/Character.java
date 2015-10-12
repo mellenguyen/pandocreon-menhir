@@ -1,5 +1,6 @@
 package model;
 import java.util.EnumMap;
+import java.util.Map.Entry;
 
 public class Character {
 	protected CharacterType name;
@@ -50,6 +51,30 @@ public class Character {
 		this.points.put(SeasonType.SUMMER, summer);
 		this.points.put(SeasonType.AUTUMN, autumn);
 		this.points.put(SeasonType.WINTER, winter);
+	}
+	
+	@Override
+	public String toString() {
+		String s = this.name.toString();
+		
+		switch (this.name) {
+			case GIANT:
+				s += "            ";
+				break;
+			case FERTILIZER:
+				s += "       ";
+				break;
+			case GOBLIN:
+				s += "           ";
+				break;
+			default:
+			
+		}
+		
+		for (Entry<SeasonType, Integer> entry : this.points.entrySet())	{
+			s += entry.getValue() + "     ";
+		}
+		return s;
 	}
 	
 }
