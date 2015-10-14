@@ -1,18 +1,27 @@
 package model;
 
-import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.Map.Entry;
 
 public abstract class Card {
-	private ArrayList<Character> characters;
+	protected EnumMap<CharacterType, Character> characters = new EnumMap<CharacterType, Character>(CharacterType.class);
 	private String name;
 	
-	public Card(String name, ArrayList<Character> characters) {
+	public Card(String name, EnumMap<CharacterType, Character> characters) {
 		this.name = name;
 		this.characters = characters;
 	}
 	
-	public boolean addCharacter(Character character) {
-		return this.characters.add(character);
+	public Character addCharacter(CharacterType characterType,Character character) {
+		return this.characters.put(characterType, character);
+	}
+	
+	public Character getCharacter(CharacterType c) {
+		return this.characters.get(c);
+	}
+	
+	public EnumMap<CharacterType, Character> getCharacters() {
+		return this.characters;
 	}
 	
 	@Override
@@ -23,8 +32,8 @@ public abstract class Card {
 		}
 		s += "\n";
 		
-		for (Character c : this.characters) {
-			s += c.toString() + "\n";
+		for (Entry<CharacterType, Character> entry : this.characters.entrySet())	{
+			s += entry.getValue().toString() + "\n";
 		}
 		return s;
 	}

@@ -7,8 +7,8 @@ public abstract class Player {
 	private static int 		nbPlayers = 0;
 	private int 			id;
 	private int 			age;
-	private int 			cailloux = 0;
-	private ArrayList<Card> cards;
+	private int 			stones = 0;
+	private ArrayList<Card> cards = new ArrayList<Card>();
 	
 	/**
 	 * Total score
@@ -44,16 +44,20 @@ public abstract class Player {
 		this.age = age;
 	}
 	
-	public int getCailloux() {
-		return cailloux;
+	public int getStones() {
+		return this.stones;
 	}
 
-	public void setCailloux(int cailloux) {
-		this.cailloux = cailloux;
+	public void setStones(int stones) {
+		this.stones = stones;
 	}
 	
-	public void addCailloux(int cailloux) {
-		this.cailloux += cailloux;
+	public void addStones(int stones) {
+		this.stones += stones;
+	}
+	
+	public void removeStones(int stones) {
+		this.stones -= stones;
 	}
 
 	public int getMenhirs() {
@@ -88,9 +92,21 @@ public abstract class Player {
 		return this.cards.remove(card);
 	}
 	
+	public ArrayList<Card> getCards() {
+		return this.cards;
+	}
+	
 	public String toString() {
 		return "Player n° " + this.id + ": " + this.name;
 	}
 	
-	public abstract void play(); 
+	/**
+	 * Display the actual score of a player, for a match
+	 * @return String Concatenation of numbers of stones and menhirs
+	 */
+	public String scoreToString() {
+		return this.toString() + " has " + this.stones + " stone(s) and " + this.menhirsMatch + " menhir(s) planted";
+	}
+	
+	public abstract ArrayList<Player> play(TextUI textUI, SeasonType seasonType, ArrayList<Player> players);
 }

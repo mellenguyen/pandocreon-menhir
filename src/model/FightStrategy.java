@@ -1,10 +1,11 @@
 package model;
 
+import java.util.ArrayList;
+
 public class FightStrategy implements GameStrategy {
 
 	@Override
-	public void play() {
-		// TODO Auto-generated method stub
+	public ArrayList<Player> play(SeasonType seasonType, Player p, ArrayList<Player> players){
 		
 	}
 	

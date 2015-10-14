@@ -6,16 +6,13 @@ import java.util.Iterator;
 public class Console {
 	private static ArrayList<Player> players = new ArrayList<Player>();
 	private static ArrayList<Card>	 cards = new ArrayList<Card>();
+	private static TextUI			 textUI = new TextUI();
 
 	public static void main(String[] args) {
 		
 		// Create cards
 		CardFactory cardFactory = new CardFactory();
 		cards.addAll(cardFactory.createCards(CardFactory.CardType.INGREDIENT));
-		Iterator<Card> it = cards.iterator();
-		while (it.hasNext()) {
-			System.out.println(it.next());
-		}
 
 		// Create players
 		PlantStrategy plantStrategy = new PlantStrategy();
@@ -25,9 +22,9 @@ public class Console {
 		players.add(playerFactory.createPlayer(PlayerFactory.PlayerType.BOT, "Bot 3", 19, plantStrategy));
 		
 		GameFactory gameFactory = new GameFactory();
-		Game simpleGame = gameFactory.createGame(GameFactory.GameType.SIMPLE_GAME, players);
+		Game simpleGame = gameFactory.createGame(GameFactory.GameType.SIMPLE_GAME, players, cards);
 		
-		simpleGame.start();
+		simpleGame.start(textUI);
 	}
 
 }

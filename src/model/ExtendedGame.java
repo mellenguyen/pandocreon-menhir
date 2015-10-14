@@ -19,7 +19,7 @@ public class ExtendedGame extends Game {
 	}
 
 	@Override
-	public void start() {
+	public void start(TextUI textUI) {
 		// TODO Auto-generated method stub
 		
 	}

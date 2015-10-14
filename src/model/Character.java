@@ -38,19 +38,27 @@ public class Character {
 		return this.points.put(season, value);
 	}
 	
-	/**
-	 * This method allow us to change the values of all seasons in order to create the deck of cards, thus avoiding us to create
-	 * a new character for every new card.
-	 * @param spring value for Spring
-	 * @param summer value for Summer
-	 * @param autumn value for Autumn
-	 * @param winter value for Winter
-	 */
-	public void changeSeasons(int spring, int summer, int autumn, int winter) {
-		this.points.put(SeasonType.SPRING, spring);
-		this.points.put(SeasonType.SUMMER, summer);
-		this.points.put(SeasonType.AUTUMN, autumn);
-		this.points.put(SeasonType.WINTER, winter);
+	public CharacterType getType() {
+		return this.name;
+	}
+	
+//	/**
+//	 * This method allow us to change the values of all seasons in order to create the deck of cards, thus avoiding us to create
+//	 * a new character for every new card.
+//	 * @param spring value for Spring
+//	 * @param summer value for Summer
+//	 * @param autumn value for Autumn
+//	 * @param winter value for Winter
+//	 */
+//	public void changeSeasons(int spring, int summer, int autumn, int winter) {
+//		this.points.put(SeasonType.SPRING, spring);
+//		this.points.put(SeasonType.SUMMER, summer);
+//		this.points.put(SeasonType.AUTUMN, autumn);
+//		this.points.put(SeasonType.WINTER, winter);
+//	}
+	
+	public Integer getValue(SeasonType seasonType) {
+		return this.points.get(seasonType);
 	}
 	
 	@Override

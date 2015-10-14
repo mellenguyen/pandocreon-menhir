@@ -19,5 +19,5 @@ public abstract class Game {
 	
 	public abstract GameFactory.GameType getGameType();
 	
-	public abstract void start();
+	public abstract void start(TextUI textUI);
 }

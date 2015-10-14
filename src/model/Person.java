@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Person extends Player {
 
 	public Person(String name, int age) {
@@ -7,8 +9,8 @@ public class Person extends Player {
 	}
 
 	@Override
-	public void play() {
-		
+	public ArrayList<Player> play(TextUI textUI, SeasonType seasonType, ArrayList<Player> players) {
+		return players;
 	}
 
 }

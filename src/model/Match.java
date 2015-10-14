@@ -28,10 +28,10 @@ public class Match {
 		this.firstPlayer = firstPlayer;
 	}
 
-	public void start() {
+	public void start(TextUI textUI) {
 		this.rounds.add(new Round(SeasonType.SPRING));
 		this.rounds.get(rounds.size() - 1).dealCards(this.players, this.cards);
-		this.rounds.get(rounds.size() - 1).execute(this.firstPlayer, this.players);
+		this.rounds.get(rounds.size() - 1).execute(textUI, this.firstPlayer, this.players);
 	}
 
 }

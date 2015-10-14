@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.Iterator;
 
 /**
@@ -140,8 +141,10 @@ public class CardFactory {
 				cards.add(createIngredient("Rires de fées",
 						createCharacter(CharacterType.GIANT, 2, 0, 1, 3),
 						createCharacter(CharacterType.FERTILIZER, 0, 3, 0, 3),
-						createCharacter(CharacterType.GOBLIN, 1, 2, 2, 1)));     
-
+						createCharacter(CharacterType.GOBLIN, 1, 2, 2, 1)));
+				
+//				taupe géante 1111 0220 0121   chien de garde  2020 1201 0130
+				
 				break;
 			case SPECIAL_CARD:
 				break;
@@ -156,10 +159,10 @@ public class CardFactory {
 	}
 	
 	private Ingredient createIngredient(String name, Character giant, Character fertilizer, Character goblin) {
-		ArrayList<Character> characters = new ArrayList<Character>();
-		characters.add(giant);
-		characters.add(fertilizer);
-		characters.add(goblin);
+		EnumMap<CharacterType, Character> characters = new EnumMap<CharacterType, Character>(CharacterType.class);
+		characters.put(giant.getType(), giant);
+		characters.put(fertilizer.getType(), fertilizer);
+		characters.put(goblin.getType(), goblin);
 		return new Ingredient(name, characters);
 	}
 

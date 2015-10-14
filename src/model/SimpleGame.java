@@ -21,7 +21,7 @@ public class SimpleGame extends Game {
 	public void initializePlayers() {
 		Iterator<Player> it = players.iterator();
 		while (it.hasNext()) {
-			it.next().addCailloux(2);
+			it.next().addStones(2);
 		}
 	}
 	
@@ -44,8 +44,8 @@ public class SimpleGame extends Game {
 	}
 	
 	@Override
-	public void start() {
-		this.match.start();
+	public void start(TextUI textUI) {
+		this.match.start(textUI);
 	}
 	
 }

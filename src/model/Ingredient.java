@@ -1,6 +1,6 @@
 package model;
 
-import java.util.ArrayList;
+import java.util.EnumMap;
 
 /**
  * An Ingredient has 3 specific characters
@@ -8,8 +8,7 @@ import java.util.ArrayList;
  *
  */
 public class Ingredient extends Card {
-	public Ingredient(String name, ArrayList<Character> characters) {
+	public Ingredient(String name, EnumMap<CharacterType, Character> characters) {
 		super(name, characters);
 	}
-
 }

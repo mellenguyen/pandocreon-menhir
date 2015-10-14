@@ -16,12 +16,12 @@ public class GameFactory {
 	
 	public GameFactory() {}
 	
-	public Game createGame(GameType g, ArrayList<Player> players) {
+	public Game createGame(GameType g, ArrayList<Player> players, ArrayList<Card> cards) {
 		Game game = null;
 		
 		switch (g) {
 			case SIMPLE_GAME:
-				game = new SimpleGame(players);
+				game = new SimpleGame(players, cards);
 				break;
 			case EXTENDED_GAME:
 				game = new ExtendedGame(players);
