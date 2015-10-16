@@ -52,6 +52,7 @@ public class Round {
 		Player p;
 		
 		while (playersIterator.hasNext()) {
+			textUI.readContinue("Press any key to continue");
 			// Displays players and their cards before each turn
 			while (playersIteratorDisplay.hasNext()) {
 				p = playersIteratorDisplay.next();

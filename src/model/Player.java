@@ -3,12 +3,12 @@ package model;
 import java.util.ArrayList;
 
 public abstract class Player {
-	private String 			name;
-	private static int 		nbPlayers = 0;
-	private int 			id;
-	private int 			age;
-	private int 			stones = 0;
-	private ArrayList<Card> cards = new ArrayList<Card>();
+	private String 			  name;
+	private static int 		  nbPlayers = 0;
+	private int 			  id;
+	private int 			  age;
+	private int 			  stones = 0;
+	protected ArrayList<Card> cards = new ArrayList<Card>();
 	
 	/**
 	 * Total score

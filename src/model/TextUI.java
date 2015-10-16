@@ -9,18 +9,28 @@ public class TextUI {
         this.scan = new Scanner(System.in);
     }
 
-    public Integer readInt(String msg) {
+    public Integer readInt(String msg, int start, int end) {
+    	int input;
+    	
         System.out.print(msg);
         this.openScan();
-        while (!scan.hasNextInt()) {
-            scan.next();
-        }
-        return this.scan.nextInt();
+        
+        do {
+        	while (!scan.hasNextInt()) {
+                scan.next();
+            }
+        	input = this.scan.nextInt();
+        } while (input < start && input > end);
+		// System.out.println("Choose a valid value between " + start + " and " + end);
+        return input;
     }
 
     public String readString(String msg) {
         System.out.print(msg);
         this.openScan();
+        while (!scan.hasNextLine()) {
+            scan.next();
+        }
         return this.scan.nextLine();
     }
 
@@ -31,6 +41,19 @@ public class TextUI {
             scan.next();
         }
         return this.scan.nextFloat();
+    }
+    
+    /**
+     * Wait until the user presses any key to continue
+     * @return
+     */
+    public String readContinue(String msg) {      
+        System.out.print(msg);
+        this.openScan();
+        while (!scan.hasNextLine()) {
+            scan.nextLine();
+        }
+        return this.scan.nextLine();
     }
 
     public void showMessage(String msg) {
