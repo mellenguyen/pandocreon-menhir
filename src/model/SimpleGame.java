@@ -45,7 +45,7 @@ public class SimpleGame extends Game {
 	
 	@Override
 	public void start(TextUI textUI) {
-		this.match.start(textUI);
+		this.match.execute(textUI);
 	}
 	
 }

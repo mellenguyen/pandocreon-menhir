@@ -11,37 +11,49 @@ import java.util.Iterator;
 public class PlantStrategy implements GameStrategy {
 
 	@Override
-	public ArrayList<Player> play(SeasonType seasonType, Player p, ArrayList<Player> players) {
-		int nbStones = p.getStones();
+	public ArrayList<Player> play(TextUI textUI, SeasonType seasonType, Player p, ArrayList<Player> players) {
+		int actualNbStones = p.getStones();
 		Iterator<Card> cardsIterator = p.getCards().iterator();
 		Card c;
 		int value;
 		
 		Card chosenCard = null;
-		int chosenValue = 0;
+		int chosenValue = -1;
+		int nbPlantedMenhirs;
 		
 		// if the player has stones, he will try to plant them
-		if (nbStones > 0) {
+		if (actualNbStones > 0) {
 			while (cardsIterator.hasNext()) {
 				c = cardsIterator.next();
 				value = c.getCharacter(CharacterType.FERTILIZER).getValue(seasonType);
-				if (value > chosenValue) {
+				if (value == actualNbStones) {
+					// we found the exact amount of fertilizable stones so we can get out of this loop
+					chosenValue = value;
+					chosenCard = c;
+					break;
+				} else if (value > chosenValue && chosenValue < actualNbStones) {
 					chosenValue = value;
 					chosenCard = c;
 				}
-				if (chosenValue == nbStones) {
-					chosenCard = c;
-					break;
-				}
 			}
-			if (nbStones <= chosenValue) {
-				p.addMenhirsMatch(nbStones);
-				p.removeStones(nbStones);
+			// remove the amount of stones and turn them in menhirs
+			if (actualNbStones <= chosenValue) {
+				p.addMenhirsMatch(actualNbStones);
+				p.removeStones(actualNbStones);
+				nbPlantedMenhirs = actualNbStones;
 			} else {
 				p.addMenhirsMatch(chosenValue);
 				p.removeStones(chosenValue);
+				nbPlantedMenhirs = chosenValue;
 			}
 			p.removeCard(chosenCard);
+			String menhirs = "";
+			if (nbPlantedMenhirs > 1) {
+				menhirs = " menhirs. ";
+			} else {
+				menhirs = " menhir.";
+			}
+			textUI.showMessage(p.toString() + " has planted " + nbPlantedMenhirs + menhirs);
 		} else {
 			// ... otherwise, he will try to get as much stones as possible
 			while (cardsIterator.hasNext()) {
@@ -54,9 +66,16 @@ public class PlantStrategy implements GameStrategy {
 			}
 			p.addStones(chosenValue);
 			p.removeCard(chosenCard);
+			String stones = "";
+			if (chosenValue > 1) {
+				stones = " stones";
+			} else {
+				stones = " stone";
+			}
+			textUI.showMessage(p.toString() + " has received " + chosenValue + stones + " from the Giant.");
 		}
-		players.set(players.indexOf(p), p);
-		return players;		
+//		players.set(players.indexOf(p), p);
+		return players;
 	}
 
 }

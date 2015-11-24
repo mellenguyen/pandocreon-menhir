@@ -89,6 +89,8 @@ public abstract class Player {
 	}
 	
 	public boolean removeCard(Card card) {
+		int index = cards.indexOf(card) + 1;
+		System.out.println("Player n°" + id + " is playing Card n°" + index);
 		return this.cards.remove(card);
 	}
 	

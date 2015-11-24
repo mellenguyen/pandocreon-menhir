@@ -12,7 +12,7 @@ public abstract class Card {
 		this.characters = characters;
 	}
 	
-	public Character addCharacter(CharacterType characterType,Character character) {
+	public Character addCharacter(CharacterType characterType, Character character) {
 		return this.characters.put(characterType, character);
 	}
 	

@@ -12,10 +12,7 @@ public class Bot extends Player {
 
 	@Override
 	public ArrayList<Player> play(TextUI textUI, SeasonType seasonType, ArrayList<Player> players) {
-		System.out.println(this.toString() + " is going to play");
-		for (Player p : players) {
-			System.out.println(p.scoreToString());
-		}
-		return this.strategy.play(seasonType, this, players);
+		textUI.showMessage(this.toString() + "'s turn for " + seasonType.toString() + ":");
+		return this.strategy.play(textUI, seasonType, this, players);
 	}
 }

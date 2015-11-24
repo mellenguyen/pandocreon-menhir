@@ -17,32 +17,7 @@ public class Round {
 	}
 	
 	/**
-	 * Deal cards to players. Each player has 4 ingredient cards.
-	 * @param players
-	 * @param cards
-	 * @return
-	 */
-	public ArrayList<Player> dealCards(ArrayList<Player> players, ArrayList<Card> cards) {
-		Iterator<Player> playersIterator = players.iterator();
-		Collections.shuffle(cards);
-		Iterator<Card> cardsIterator = cards.iterator();
-		Player p;
-		
-		while (playersIterator.hasNext()) {
-			p = playersIterator.next();
-			for (int i = 0; i < 4; i++) {
-				if (cardsIterator.hasNext()) {
-					p.addCard(cardsIterator.next());
-				} else {
-					// Exception : pas assez de cartes
-				}
-			}
-		}
-		return players;
-	}
-	
-	/**
-	 * Play a round of a match
+	 * Play the round
 	 */
 	public void execute(TextUI textUI, Player firstPlayer, ArrayList<Player> players) {
 		Iterator<Player> playersIteratorDisplay = players.iterator();
@@ -67,7 +42,12 @@ public class Round {
 			playersIteratorDisplay = players.iterator();
 			
 			p = playersIterator.next();
-			players = p.play(textUI, this.season, players);
+			p.play(textUI, this.season, players);
+			
+			textUI.showMessage("Score : ");
+			for (Player pl : players) {
+				System.out.println(pl.scoreToString());
+			}
 		}
 	}
 }
