@@ -9,9 +9,21 @@ import java.util.Iterator;
  *
  */
 public class PlantStrategy implements GameStrategy {
+	private static PlantStrategy INSTANCE = new PlantStrategy();
+	
+	private PlantStrategy() {}
+	
+	public static PlantStrategy getInstance() {
+		return INSTANCE;
+	}
+	
+	@Override
+	public StrategyType getStrategyType() {
+		return StrategyType.PLANT;
+	}
 
 	@Override
-	public ArrayList<Player> play(TextUI textUI, SeasonType seasonType, Player p, ArrayList<Player> players) {
+	public void play(TextUI textUI, SeasonType seasonType, Player p, ArrayList<Player> players) {
 		int actualNbStones = p.getStones();
 		Iterator<Card> cardsIterator = p.getCards().iterator();
 		Card c;
@@ -74,8 +86,6 @@ public class PlantStrategy implements GameStrategy {
 			}
 			textUI.showMessage(p.toString() + " has received " + chosenValue + stones + " from the Giant.");
 		}
-//		players.set(players.indexOf(p), p);
-		return players;
 	}
 
 }

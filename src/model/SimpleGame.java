@@ -1,4 +1,6 @@
-package model;import java.util.ArrayList;
+package model;
+
+import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
@@ -12,12 +14,12 @@ public class SimpleGame extends Game {
 
 	public SimpleGame(ArrayList<Player> players, ArrayList<Card> cards) {
 		super(players);
-		this.initializePlayers();
 		this.cards = cards;
 		this.match = new Match(players, this, this.cards);
 		this.match.setFirstPlayer(getYoungestPlayer());
 	}
 	
+	@Override
 	public void initializePlayers() {
 		Iterator<Player> it = players.iterator();
 		while (it.hasNext()) {

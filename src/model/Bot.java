@@ -9,10 +9,14 @@ public class Bot extends Player {
 		super(name, age);
 		this.strategy = strategy;
 	}
+	
+	public GameStrategy getStrategy() {
+		return this.strategy;
+	}
 
 	@Override
-	public ArrayList<Player> play(TextUI textUI, SeasonType seasonType, ArrayList<Player> players) {
-		textUI.showMessage(this.toString() + "'s turn for " + seasonType.toString() + ":");
-		return this.strategy.play(textUI, seasonType, this, players);
+	public void play(TextUI textUI, SeasonType seasonType, ArrayList<Player> players) {
+		textUI.showMessage(this.toString() + "'s turn for " + seasonType.toString() + " :");
+		this.strategy.play(textUI, seasonType, this, players);
 	}
 }

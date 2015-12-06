@@ -65,6 +65,16 @@ public class Match {
 		for (Round round : this.rounds) {
 			round.execute(textUI, this.firstPlayer, this.players);
 		}
+		// Transfer temporary menhirs in 'menhirsMatch' to 'menhirs'
+		for (Player p : this.players) {
+			p.setMenhirs(p.getMenhirs() + p.getMenhirsMatch());
+			p.setMenhirsMatch(0);
+		}
+		// Sort players to display by score
+		Collections.sort(this.players);
+		textUI.showMessage(players);
+		// Re-sort players to have initial order by ID (very important)
+		Collections.sort(this.players, Player.Comparators.ID);		
 	}
 
 }

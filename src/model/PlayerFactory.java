@@ -1,14 +1,19 @@
 package model;
 
 public class PlayerFactory {
+	private static PlayerFactory INSTANCE = new PlayerFactory();
 	
 	public static enum PlayerType {
 		PERSON,
 		BOT;
 	}
 	
-	public PlayerFactory() {}
+	private PlayerFactory() {}
 	
+	public static PlayerFactory getInstance() {
+		return INSTANCE;
+	}
+ 	
 	public Player createPlayer(PlayerType playerType, String name, int age, GameStrategy strategy) {
 		Player player = null;
 		

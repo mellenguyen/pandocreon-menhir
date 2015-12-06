@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * Every round/Season of a match is played by each player once
+ * Every round/season of a match is played by each player once
  * @author mellenguyen
  *
  */
@@ -27,7 +27,7 @@ public class PlayersIterator implements Iterator<Player> {
     public Integer getCounter() {
     	return this.counter;
     }
-
+    
     @Override
     public Player next() {
     	if (hasNext()) {

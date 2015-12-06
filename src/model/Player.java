@@ -1,14 +1,16 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
-public abstract class Player {
+public abstract class Player implements Comparable<Player> {
 	private String 			  name;
 	private static int 		  nbPlayers = 0;
 	private int 			  id;
 	private int 			  age;
 	private int 			  stones = 0;
 	protected ArrayList<Card> cards = new ArrayList<Card>();
+	protected ArrayList<Card> specialCards = new ArrayList<Card>();
 	
 	/**
 	 * Total score
@@ -28,8 +30,12 @@ public abstract class Player {
 		this.id = Player.nbPlayers;
 	}
 	
+	public int getId() {
+		return this.id;
+	}
+	
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
@@ -37,7 +43,7 @@ public abstract class Player {
 	}
 
 	public int getAge() {
-		return age;
+		return this.age;
 	}
 
 	public void setAge(int age) {
@@ -61,7 +67,7 @@ public abstract class Player {
 	}
 
 	public int getMenhirs() {
-		return menhirs;
+		return this.menhirs;
 	}
 
 	public void setMenhirs(int menhirs) {
@@ -73,7 +79,7 @@ public abstract class Player {
 	}
 
 	public int getMenhirsMatch() {
-		return menhirsMatch;
+		return this.menhirsMatch;
 	}
 
 	public void setMenhirsMatch(int menhirsMatch) {
@@ -94,8 +100,22 @@ public abstract class Player {
 		return this.cards.remove(card);
 	}
 	
+	public boolean addSpecialCard(SpecialCard card) {
+		return this.specialCards.add(card);
+	}
+	
+	public boolean removeSpecialCard(SpecialCard card) {
+		int index = specialCards.indexOf(card) + 1;
+		System.out.println("Player n°" + id + " is playing Special Card n°" + index);
+		return this.specialCards.remove(card);
+	}	
+	
 	public ArrayList<Card> getCards() {
 		return this.cards;
+	}
+	
+	public ArrayList<Card> getSpecialCards() {
+		return this.specialCards;
 	}
 	
 	public String toString() {
@@ -110,5 +130,23 @@ public abstract class Player {
 		return this.toString() + " has " + this.stones + " stone(s) and " + this.menhirsMatch + " menhir(s) planted";
 	}
 	
-	public abstract ArrayList<Player> play(TextUI textUI, SeasonType seasonType, ArrayList<Player> players);
+	public abstract void play(TextUI textUI, SeasonType seasonType, ArrayList<Player> players);
+	
+	// compareTo should return < 0 if this is supposed to be
+    // less than p, > 0 if this is supposed to be greater than 
+    // p and 0 if they are supposed to be equal
+	@Override
+	public int compareTo(Player p) {
+		return ((Player) p).getMenhirs() - this.getMenhirs();
+	}
+	
+	public static class Comparators {
+
+        public static Comparator<Player> ID = new Comparator<Player>() {
+			@Override
+			public int compare(Player p0, Player p1) {
+				return p0.getId() - p1.getId();
+			}
+        };
+    }
 }

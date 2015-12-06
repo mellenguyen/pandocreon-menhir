@@ -11,12 +11,18 @@ import java.util.Iterator;
  *
  */
 public class CardFactory {
+	private static CardFactory INSTANCE = new CardFactory();
+	
 	public static enum CardType {
 		INGREDIENT,
 		SPECIAL_CARD;
 	}
 	
-	public CardFactory() {}
+	private CardFactory() {}
+	
+	public static CardFactory getInstance() {
+		return INSTANCE;
+	}
 	
 	public ArrayList<Card> createCards(CardType cardType) {
 		ArrayList<Card> cards = new ArrayList<Card>();
@@ -143,12 +149,18 @@ public class CardFactory {
 						createCharacter(CharacterType.FERTILIZER, 0, 3, 0, 3),
 						createCharacter(CharacterType.GOBLIN, 1, 2, 2, 1)));
 				
-//				taupe géante 1111 0220 0121   chien de garde  2020 1201 0130
-				
 				break;
 			case SPECIAL_CARD:
+				cards.add(new SpecialCard("Taupe géante", createSpecialCharacter(createCharacter(CharacterType.GIANT_MOLE, 1, 1, 1, 1))));
+				cards.add(new SpecialCard("Taupe géante", createSpecialCharacter(createCharacter(CharacterType.GIANT_MOLE, 0, 2, 2, 0))));
+				cards.add(new SpecialCard("Taupe géante", createSpecialCharacter(createCharacter(CharacterType.GIANT_MOLE, 0, 1, 2, 1))));
+				cards.add(new SpecialCard("Chien de garde", createSpecialCharacter(createCharacter(CharacterType.WATCHDOG, 2, 0, 2, 0))));
+				cards.add(new SpecialCard("Chien de garde", createSpecialCharacter(createCharacter(CharacterType.WATCHDOG, 1, 2, 0, 1))));
+				cards.add(new SpecialCard("Chien de garde", createSpecialCharacter(createCharacter(CharacterType.WATCHDOG, 0, 1, 3, 0))));
+				
 				break;
-			default:		
+			default:
+				break;
 			
 		}
 		return cards;
@@ -165,5 +177,10 @@ public class CardFactory {
 		characters.put(goblin.getType(), goblin);
 		return new Ingredient(name, characters);
 	}
-
+	
+	private EnumMap<CharacterType, Character> createSpecialCharacter(Character specialCharacter) {
+		EnumMap<CharacterType, Character> character = new EnumMap<CharacterType, Character>(CharacterType.class);
+		character.put(specialCharacter.getType(), specialCharacter);
+		return character;
+	}
 }

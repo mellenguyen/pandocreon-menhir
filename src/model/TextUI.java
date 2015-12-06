@@ -16,12 +16,12 @@ public class TextUI {
         this.openScan();
         
         do {
+        	System.out.println("Choose a valid value between " + start + " and " + end);
         	while (!scan.hasNextInt()) {
                 scan.next();
             }
         	input = this.scan.nextInt();
-        } while (input < start && input > end);
-		// System.out.println("Choose a valid value between " + start + " and " + end);
+        } while (input < start || input > end);
         return input;
     }
 
