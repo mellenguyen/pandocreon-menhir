@@ -10,7 +10,7 @@ public abstract class Player implements Comparable<Player> {
 	private int 			  age;
 	private int 			  stones = 0;
 	protected ArrayList<Card> cards = new ArrayList<Card>();
-	protected ArrayList<Card> specialCards = new ArrayList<Card>();
+	protected Card specialCard;
 	
 	/**
 	 * Total score
@@ -100,22 +100,22 @@ public abstract class Player implements Comparable<Player> {
 		return this.cards.remove(card);
 	}
 	
-	public boolean addSpecialCard(SpecialCard card) {
-		return this.specialCards.add(card);
+	public void addSpecialCard(Card card) {
+		this.specialCard = card;
 	}
 	
-	public boolean removeSpecialCard(SpecialCard card) {
-		int index = specialCards.indexOf(card) + 1;
-		System.out.println("Player n°" + id + " is playing Special Card n°" + index);
-		return this.specialCards.remove(card);
+	public void removeSpecialCard() {
+		System.out.println("Player n°" + id + " is playing its Special Card !");
+		System.out.println(this.specialCard.toString());
+		this.specialCard = null;
 	}	
 	
 	public ArrayList<Card> getCards() {
 		return this.cards;
 	}
 	
-	public ArrayList<Card> getSpecialCards() {
-		return this.specialCards;
+	public Card getSpecialCard() {
+		return this.specialCard;
 	}
 	
 	public String toString() {
@@ -128,6 +128,14 @@ public abstract class Player implements Comparable<Player> {
 	 */
 	public String scoreToString() {
 		return this.toString() + " has " + this.stones + " stone(s) and " + this.menhirsMatch + " menhir(s) planted";
+	}
+	
+	/**
+	 * Display the score of a player aka the number of menhirs
+	 * @return
+	 */
+	public String finalScoreToString() {
+		return this.toString() + " has " + this.menhirs + " menhirs.";
 	}
 	
 	public abstract void play(TextUI textUI, SeasonType seasonType, ArrayList<Player> players);

@@ -11,6 +11,14 @@ public abstract class Card {
 		this.name = name;
 		this.characters = characters;
 	}
+
+	public String getName() {
+		return this.name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
 	
 	public Character addCharacter(CharacterType characterType, Character character) {
 		return this.characters.put(characterType, character);
@@ -32,7 +40,7 @@ public abstract class Card {
 		}
 		s += "\n";
 		
-		for (Entry<CharacterType, Character> entry : this.characters.entrySet())	{
+		for (Entry<CharacterType, Character> entry : this.characters.entrySet()) {
 			s += entry.getValue().toString() + "\n";
 		}
 		return s;

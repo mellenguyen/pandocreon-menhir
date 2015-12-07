@@ -12,7 +12,7 @@ public class Console {
 	private static PlayerFactory playerFactory 			= PlayerFactory.getInstance();
 	private static PlantStrategy plantStrategy 			= PlantStrategy.getInstance();
 	private static FightStrategy fightStrategy 			= FightStrategy.getInstance();
-	private static TextUI			 textUI 			= new TextUI();
+	private static TextUI textUI						= TextUI.getInstance();
 	
 	public static void main(String[] args) {
 		int choice = textUI.readInt("Choose the type of game you want :\n" + GameFactory.GameType.allToString(), 1, 2);
@@ -21,7 +21,7 @@ public class Console {
 		// Create cards		
 		ingredientCards.addAll(cardFactory.createCards(CardFactory.CardType.INGREDIENT));
 		specialCards.addAll(cardFactory.createCards(CardFactory.CardType.SPECIAL_CARD));
-		
+
 		// Randomize age of players
 		Random randomGenerator = new Random();
 		
@@ -29,7 +29,7 @@ public class Console {
 			if (i % 2 == 0) {
 				players.add(playerFactory.createPlayer(PlayerFactory.PlayerType.BOT, "Bot "  + i, randomGenerator.nextInt(100 - 8) + 8, plantStrategy));
 			} else {
-				players.add(playerFactory.createPlayer(PlayerFactory.PlayerType.BOT, "Bot "  + i, randomGenerator.nextInt(100 - 8) + 8, plantStrategy));
+				players.add(playerFactory.createPlayer(PlayerFactory.PlayerType.BOT, "Bot "  + i, randomGenerator.nextInt(100 - 8) + 8, fightStrategy));
 			}
 		}
 		

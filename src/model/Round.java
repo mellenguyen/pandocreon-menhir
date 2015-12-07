@@ -21,13 +21,16 @@ public class Round {
 	 */
 	public void execute(TextUI textUI, Player firstPlayer, ArrayList<Player> players) {
 		Iterator<Player> playersIteratorDisplay = players.iterator();
-		PlayersIterator playersIterator = new PlayersIterator(players, firstPlayer);
+//		PlayersIterator playersIterator = new PlayersIterator(players, firstPlayer);
+		Iterator<Player> playersIterator = players.iterator();
 		Iterator<Card> cardsIterator;
 		int counterCard;
 		Player p;
 		
 		while (playersIterator.hasNext()) {
 			textUI.readContinue("Press any key to continue");
+			// TODO : any player here can play its special card (Giant Mole) if he has one
+			
 			// Displays players and their cards before each turn
 			while (playersIteratorDisplay.hasNext()) {
 				p = playersIteratorDisplay.next();
@@ -37,6 +40,10 @@ public class Round {
 				while (cardsIterator.hasNext()) {
 					textUI.showMessage("Card n°"+ ++counterCard);
 					textUI.showMessage(cardsIterator.next());
+				}
+				if (p.getSpecialCard() != null) {
+					textUI.showMessage("Special Card : ");
+					textUI.showMessage(p.getSpecialCard());
 				}
 			}
 			playersIteratorDisplay = players.iterator();

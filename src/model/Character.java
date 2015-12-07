@@ -60,6 +60,11 @@ public class Character {
 			case GOBLIN:
 				s += "           ";
 				break;
+			case GIANT_MOLE:
+				s += "       ";
+				break;
+			case WATCHDOG:
+				s += "         ";
 			default:
 			
 		}

@@ -4,6 +4,13 @@ import java.util.Scanner;
 
 public class TextUI {
     private Scanner scan = null;
+    private static TextUI INSTANCE = new TextUI();
+    
+    private TextUI() {}
+    
+    public static TextUI getInstance() {
+    	return INSTANCE;
+    }
 
     protected void openScan() {
         this.scan = new Scanner(System.in);
@@ -31,7 +38,9 @@ public class TextUI {
         while (!scan.hasNextLine()) {
             scan.next();
         }
-        return this.scan.nextLine();
+        String s = this.scan.nextLine();
+
+        return s;
     }
 
     public Float readFloat(String msg) {

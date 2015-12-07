@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 /**
@@ -9,10 +10,15 @@ import java.util.Iterator;
  *
  */
 public class ExtendedGame extends Game {
-	private ArrayList<Match> matches;
-
-	public ExtendedGame(ArrayList<Player> players) {
-		super(players);
+	private ArrayList<Match> matches = new ArrayList<Match>();
+	private ArrayList<Card> specialCards;
+	
+	public ExtendedGame(ArrayList<Player> players, ArrayList<Card> ingredientCards, ArrayList<Card> specialCards) {
+		super(players, ingredientCards);
+		this.specialCards = specialCards;
+		for (int i = 1; i <= players.size(); i++) {
+			matches.add(new Match(players, this, this.cards, this.specialCards));
+		}
 	}
 	
 	@Override
@@ -21,26 +27,10 @@ public class ExtendedGame extends Game {
 	}
 
 	@Override
-	public void initializePlayers() {
-		Player p;
-		
-		Iterator<Player> it = players.iterator();
-		while (it.hasNext()) {
-			p = it.next();
-			if (p instanceof Bot) {
-				if (((Bot) p).getStrategy().getStrategyType() == StrategyType.PLANT) {
-					p.addStones(2);
-				} else if (((Bot) p).getStrategy().getStrategyType() == StrategyType.FIGHT) {
-					p.addSpecialCard();
-				}
-			}
-		}
-		
-	}
-
-	@Override
 	public void start(TextUI textUI) {
-		// TODO Auto-generated method stub
+		for (Match m : this.matches) {
+			m.execute(textUI);
+		}
 		
 	}
 }

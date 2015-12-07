@@ -4,16 +4,15 @@ import java.util.ArrayList;
 
 public abstract class Game {
 	protected ArrayList<Player> players;
+	protected ArrayList<Card> cards;
 	
 	public Game(){	
 	}
 	
-	public Game(ArrayList<Player> players) {
+	public Game(ArrayList<Player> players, ArrayList<Card> cards) {
 		this.players = players;
-		this.initializePlayers();
+		this.cards = cards;
 	}
-	
-	public abstract void initializePlayers();
 	
 	public ArrayList<Player> getPlayers() {
 		return this.players;

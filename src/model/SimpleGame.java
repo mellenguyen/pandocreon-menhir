@@ -9,22 +9,12 @@ import java.util.Iterator;
  *
  */
 public class SimpleGame extends Game {
-	private Match 			match;
-	private ArrayList<Card>	cards;
+	private Match match;
 
 	public SimpleGame(ArrayList<Player> players, ArrayList<Card> cards) {
-		super(players);
-		this.cards = cards;
+		super(players, cards);
 		this.match = new Match(players, this, this.cards);
 		this.match.setFirstPlayer(getYoungestPlayer());
-	}
-	
-	@Override
-	public void initializePlayers() {
-		Iterator<Player> it = players.iterator();
-		while (it.hasNext()) {
-			it.next().addStones(2);
-		}
 	}
 	
 	private Player getYoungestPlayer() {
